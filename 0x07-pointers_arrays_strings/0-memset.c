@@ -1,50 +1,20 @@
 #include "main.h"
-#include <stdio.h>
-
 /**
- * print_buffer - prints buffer
- * @b: buffer
- * @size: size
- * Return: void
+ *_memset - fill a block of memory with a specific value
+ *@s: starting address of memory to be filled
+ *@b: the desired value
+ *@n: number of bytes to be changed
+ *
+ *Return: changed array with new value for n bytes
  */
-
-void print_buffer(char *b, int size)
+char *_memset(char *s, char b, unsigned int n)
 {
-	int o, j, i;
+	int i = 0;
 
-	o = 0;
-
-	if (size <= 0)
+	for (; n > 0; i++)
 	{
-		printf("\n");
-		return;
+		s[i] = b;
+		n--;
 	}
-	while (o < size)
-	{
-		j = size - o < 10 ? size - o : 10;
-		printf("%08x: ", o);
-		for (i = 0; i < 10; i++)
-		{
-			if (i < j)
-				printf("%02x", *(b + o + i));
-			else
-				printf("  ");
-			if (i % 2)
-			{
-				printf(" ");
-			}
-		}
-		for (i = 0; i < j; i++)
-		{
-			int c = *(b + o + i);
-
-			if (c < 32 || c > 132)
-			{
-				c = '.';
-			}
-			printf("%c", c);
-		}
-		printf("\n");
-		o += 10;
-	}
-}
+	return (s);
+}	
